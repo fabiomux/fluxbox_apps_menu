@@ -1,0 +1,123 @@
+---
+# other options: kdesu and gnomesu
+:switch_user: 'xdg-su'
+:terminal: 'xdg-terminal'
+:icons: 
+  App Name: 'icon-name'
+:banned_files: 
+- 'qmmp_.*'
+- 'umplayer_.*'
+:icon_paths:
+- /usr/share/icons/gnome/16x16/apps
+- /usr/share/icons/oxygen/16x16/apps
+- /usr/share/icons/hicolor/16x16/apps
+- /usr/share/pixmaps
+- /usr/share/icons/hicolor/32x32/apps
+- /usr/share/icons/oxygen/16x16/categories
+- /usr/share/icons/hicolor/48x48/apps
+- /usr/share/icons/hicolor/128x128/apps
+:app_paths:
+- /usr/share/applications
+- /usr/share/applications/kde4
+- /usr/share/applications/YaST2
+:menu:
+  Development:
+    :icon: applications-development
+    :categories:
+    - Development
+  Educational:
+    :icon: applications-education-science
+    :categories:
+    - Science
+    - Astronomy
+    - Education
+    - Geography
+  Games:
+    :icon: applications-games
+    :categories:
+    - Game
+    - CardGame
+  Graphic:
+    :icon: applications-graphics
+    :categories:
+    - Graphics
+    - VectorGraphics
+  Internet:
+    :icon: applications-internet
+    :categories:
+    - Network
+  Multimedia:
+    :icon: applications-multimedia
+    :categories:
+    - Audio
+    - Video
+    - Player
+    - AudioVideoEditing
+    - Mixer
+    - Recorder
+    - DiscBurning
+  Office:
+    :icon: applications-office
+    :categories:
+    - Office
+    LibreOffice Draw: ''
+  System:
+    :icon: applications-system
+    :categories:
+    - Settings
+    - System
+    - DesktopSettings
+    - Documentation
+    '. / Yast /':
+      :icon: yast-mascot
+      :categories:
+      - Yast
+      Hardware:
+        :icon: package_yast_hardware
+        :categories:
+        - X-SuSE-YaST-Hardware
+      Miscellaneous:
+        :icon: package_yast_misc
+        :categories:
+        - X-SuSE-YaST-Misc
+      Network Devices:
+        :icon: yast-network_devices
+        :categories:
+        - X-SuSE-YaST-Network
+      Network Services:
+        :icon: yast-network_services
+        :categories:
+        - X-SuSE-YaST-Net_advanced
+      Security and Users:
+        :icon: yast-security
+        :categories:
+        - X-SuSE-YaST-Security
+      System:
+        :icon: package_yast_system
+        :categories:
+        - X-SuSE-YaST-System
+      Software:
+        :icon: yast-software
+        :categories:
+        - X-SuSE-YaST-Software
+      Support:
+        :icon: yast-support
+        :categories:
+        - X-SuSE-YaST-Support
+  Utility:
+    :icon: applications-utilities
+    :categories:
+    - Archiving
+    - Utility
+    '. / Text Files /':
+      :icon: accessories-text-editor
+      :categories:
+        - TextEditor
+    '. / File Managers /':
+      :icon: system-file-manager
+      :categories:
+      - FileManager
+    '. / Terminal Emulators /':
+      :icon: utilities-terminal
+      :categories:
+      - TerminalEmulator
