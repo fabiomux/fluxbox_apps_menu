@@ -21,7 +21,22 @@ Or install it yourself as:
 
 ## Usage
 
-Run fluxbox_apps_menu help
+Build the menu
+
+    $ fluxbox_apps_menu build
+    
+Create a copy of the config file under the ~/.fluxbox folder
+
+    $ fluxbox_apps_menu menuconfig
+    
+Get help
+
+    $ fluxbox_apps_menu help
+    
+Get help for a specific task
+
+    $ fluxbox_apps_menu help build
+    $ fluxbox_apps_menu help menuconfig
 
 ## Contributing
 
