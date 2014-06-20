@@ -1,8 +1,11 @@
 # FluxboxAppsMenu
 
 FluxboxAppsMenu create an applications menu file for Fluxbox Window Manager
-including all the applications stored within the folders containing all  the
-_.desktop_ files.
+including the applications stored within the folders containing the
+_.desktop_ files and discarding automatically those marked as hidden.
+
+They will be organized in several categories and sub-categories specified
+within the config file *fluxbox_apps_menu.yaml*
 
 
 ## Installation
@@ -25,7 +28,8 @@ Build the menu
 
     $ fluxbox_apps_menu build
     
-Create a copy of the config file under the ~/.fluxbox folder
+Create a copy of the config file (*fluxbox_apps_menu.yaml*) under
+the _~/.fluxbox_ folder
 
     $ fluxbox_apps_menu menuconfig
     
@@ -37,6 +41,12 @@ Get help for a specific task
 
     $ fluxbox_apps_menu help build
     $ fluxbox_apps_menu help menuconfig
+
+When the application's menu is built it can be included in
+your main fluxbox menu file (usually *~/.fluxbox/menu*) adding
+the row below where you want display it:
+
+    [include] (~/.fluxbox/menu-apps)
 
 ## Contributing
 

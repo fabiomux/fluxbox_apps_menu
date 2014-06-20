@@ -23,7 +23,7 @@ module FluxboxAppsMenu
     def help(arg = nil)
       if arg.nil?
         puts <<EOL
-Fluxbox Apps Menu v.#{FluxboxAppsMenu::VERSION} by Fabio Mucciante
+FluxboxAppsMenu v.#{FluxboxAppsMenu::VERSION} by Fabio Mucciante
 
 Description:
   Build a Fluxbox menu putting the applications in the right
@@ -32,7 +32,10 @@ Description:
   Using the "menuconfig" task a copy of this file will be created
   under the "~/.fluxbox" path.
 
-  The default menu file is located in "~/.fluxbox/menu-apps".
+  The application's menu file will be created in "~/.fluxbox/menu-apps"
+  and can be included within your fluxbox menu adding the row below:
+  
+    [include] (~/.fluxbox/menu-apps)
 
 EOL
         super
