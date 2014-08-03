@@ -22,7 +22,7 @@ module FluxboxAppsMenu
     end
 
     def hidden?
-      @ini['Desktop Entry']['NoDisplay'] == 'true' 
+      @ini['Desktop Entry']['NoDisplay'] == true
     end
 
     def banned_file?
@@ -58,7 +58,7 @@ module FluxboxAppsMenu
     end
 
     def exec
-      com = @ini['Desktop Entry']['Exec'].gsub('%c', name).gsub('%F', '')
+      com = @ini['Desktop Entry']['Exec'].to_s.gsub('%c', name).gsub('%F', '')
         .gsub('%i', '').gsub('%U', '').gsub('%f', '').gsub('%m', '')
         .gsub('%u', '').gsub(/[ ]{2,}/, ' ').gsub(/\ }/, '}')
 
