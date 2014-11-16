@@ -33,7 +33,15 @@ the _~/.fluxbox_ folder
 
     $ fluxbox_apps_menu menuconfig
     
-Get help
+When the application menu is built it can be included in
+your main fluxbox menu file (usually *~/.fluxbox/menu*) adding
+the row below where you want display it:
+
+    [include] (~/.fluxbox/menu-apps)
+
+## Get help
+
+Where to start
 
     $ fluxbox_apps_menu help
     
@@ -41,12 +49,10 @@ Get help for a specific task
 
     $ fluxbox_apps_menu help build
     $ fluxbox_apps_menu help menuconfig
+    
+More help
 
-When the application's menu is built it can be included in
-your main fluxbox menu file (usually *~/.fluxbox/menu*) adding
-the row below where you want display it:
-
-    [include] (~/.fluxbox/menu-apps)
+- The wiki page: https://github.com/fabiomux/fluxbox_apps_menu/wiki
 
 ## Contributing
 
