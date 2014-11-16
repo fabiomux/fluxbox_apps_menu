@@ -30,11 +30,14 @@ module FluxboxAppsMenu
     private
 
     def menu_item(label, icon, type = 'exec', command = nil)
-      label = " (#{label})" unless label.to_s.empty?
-      icon = " <#{icon}>" unless icon.to_s.empty?
-      command = " {#{command}}" unless command.nil?
+      str = []
+      str << "[#{type}]"
+      str << "(#{label.gsub(/(?<!\\)\)/, '\)')})" unless label.to_s.empty?
+      str << "{#{command}}" unless command.nil?
+      str << "<#{icon}>" unless icon.to_s.empty?
 
-      "[#{type}]#{label}#{command}#{icon}"
+      # "[#{type}]#{label}#{command}#{icon}"
+      str.join(' ')
     end
 
     def traverse_menu(menu, cat, label, selected_index = nil)
