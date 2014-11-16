@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    fluxbox_apps_menu (1.0.0)
-      inifile
+    fluxbox_apps_menu (1.1.1)
+      inifile (~> 3.0)
       thor
 
 GEM
@@ -10,7 +10,7 @@ GEM
   specs:
     inifile (3.0.0)
     rake (10.1.1)
-    thor (0.17.0)
+    thor (0.19.1)
 
 PLATFORMS
   ruby
