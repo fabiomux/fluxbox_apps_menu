@@ -49,7 +49,7 @@ module FluxboxAppsMenu
     end
 
     def terminal?
-      %w(true 0).include? @ini['Desktop Entry']['Terminal'].to_s
+      %w(true 1).include? @ini['Desktop Entry']['Terminal'].to_s
     end
 
     def categories
