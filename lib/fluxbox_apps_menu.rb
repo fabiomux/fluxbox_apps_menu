@@ -56,13 +56,13 @@ module FluxboxAppsMenu
           name = ini.name
 
           if ini.hidden? 
-            puts '[Hidden] '.bold.green + "The application #{name} is hidden" unless @silent
+            puts '[Hidden] '.bold.green + "The application \"#{name}\" is hidden" unless @silent
             next
           end
 
           cat = ini.categories
           if cat.nil?
-            puts '[No Category] '.bold.red + "The application #{name} doesn't have any category" unless @silent
+            puts '[No Category] '.bold.red + "The application \"#{name}\" doesn't have any category" unless @silent
             next
           end
 
@@ -70,12 +70,12 @@ module FluxboxAppsMenu
           unless submenu.nil?
             icon = ini.icon
             if icon.nil?
-              puts '[No Icon] '.bold.yellow + "#{name} doesn't have any icon" unless @silent
+              puts '[No Icon] '.bold.yellow + "The application \"#{name}\" doesn't have any icon" unless @silent
             end
 
             submenu[name] = @fmenu.item_exec(name, icon, ini.exec)
           else
-            puts "[No mapped category] #{name} doesn't have any mapped category within the menu".bold.red unless @silent
+            puts '[No mapped category] '.bold.red + "The application \"#{name}\" doesn't have any mapped category among: #{ini.categories.join(', ')}" unless @silent
           end
         end
       end
