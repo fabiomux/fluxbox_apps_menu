@@ -36,7 +36,6 @@ module FluxboxAppsMenu
       str << "{#{command}}" unless command.nil?
       str << "<#{icon}>" unless icon.to_s.empty?
 
-      # "[#{type}]#{label}#{command}#{icon}"
       str.join(' ')
     end
 
@@ -59,15 +58,21 @@ module FluxboxAppsMenu
             selected, selected_index = result, index unless result.nil? 
           end
 
-          cat.each do |c|
-            if info[:categories].include?(c.strip)
-              i = info[:categories].index(c)
+          raise NoCategoriesError, key unless info.has_key? :categories
+
+          categories = info[:categories].map do |s|
+            s.downcase unless s.nil?
+          end
+
+          cat.map(&:downcase).each do |c|
+            if categories.include?(c.strip)
+              i = categories.index(c)
               if i < selected_index
                 selected = info 
                 selected_index = i
               end
             end
-          end if info.has_key? :categories
+          end
         end
       end
 
@@ -82,22 +87,21 @@ module FluxboxAppsMenu
       menu = menu.select { |k, v| k.class == String }.sort_by { |k, v| v.class == String ? k.downcase : '' }
       menu.each do |name, items|
         if items.class.to_s == 'Hash'
-          text += prefix + item_submenu(name, @cfg.expand_icon(nil, items[:icon])) + "\n"
-
+          icon = items[:icon]
           items = items.select { |k, v| k.class == String }
+          subitems = render_menu(items, level + 1)
 
-          text += render_menu(items, level + 1)
+          unless subitems.empty?
+            text += "#{prefix}#{item_submenu(name, @cfg.expand_icon(nil, icon))}\n#{subitems}#{prefix}[end]\n"
+          end
 
-          text += "#{prefix}[end]\n"
         elsif items.class.to_s == 'String'
           text += prefix + items + "\n"
         end
       end
 
       text
-
     end
 
   end
-
 end
