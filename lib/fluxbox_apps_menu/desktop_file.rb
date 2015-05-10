@@ -22,7 +22,7 @@ module FluxboxAppsMenu
     end
 
     def hidden?
-      @ini['Desktop Entry']['NoDisplay'] == true
+       %w(true 1).include? @ini['Desktop Entry']['NoDisplay'].to_s
     end
 
     def banned_file?
@@ -31,20 +31,6 @@ module FluxboxAppsMenu
     end
 
     def icon
-=begin      
-      iname = @cfg.icons[name(false)]
-      iname = @ini['Desktop Entry']['Icon'] if iname.nil?
-
-      return nil if iname.to_s.empty?
-      return iname if iname.to_s.match('/') && File.exists?(iname)
-
-      iname.gsub!(/\.png$/, '')
-
-      @cfg.icon_paths.each do |p|
-        return "#{p}/#{iname}.png" if File.exists?("#{p}/#{iname}.png")
-      end
-      return nil
-=end
       @cfg.expand_icon(name(false), @ini['Desktop Entry']['Icon'])
     end
 
@@ -60,7 +46,7 @@ module FluxboxAppsMenu
     def exec
       com = @ini['Desktop Entry']['Exec'].to_s.gsub('%c', name).gsub('%F', '')
         .gsub('%i', '').gsub('%U', '').gsub('%f', '').gsub('%m', '')
-        .gsub('%u', '').gsub(/[ ]{2,}/, ' ').gsub(/\ }/, '}')
+        .gsub('%u', '').gsub(/[ ]{2,}/, ' ').gsub(/\ }/, '}').strip
 
       terminal? ? @cfg.terminal + ' ' + com : com
     end
