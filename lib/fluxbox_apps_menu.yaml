@@ -70,8 +70,26 @@
     - System
     - DesktopSettings
     - Documentation
+    '. / Gnome /':
+      :icon:
+      :mandatory_categories:
+      - X-GNOME-Settings-Panel
+      :categories:
+      - X-GNOME-Settings-Panel
+      Desktop:
+        :icon: 
+        :categories:
+        - X-GNOME-PersonalSettings
+      Hardware:
+        :categories:
+        - HardwareSettings
+      System:
+        :categories:
+        - X-GNOME-SystemSettings
     '. / Yast /':
       :icon: yast
+      :mandatory_categories:
+      - X-SuSE-YaST
       :categories:
       - Yast
       Hardware:
