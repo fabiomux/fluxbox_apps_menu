@@ -7,7 +7,7 @@ module FluxboxAppsMenu
     end
 
     def assign_menu(cat, label)
-      traverse_menu(@cfg.menu, cat, label)[0]
+      traverse_menu(@cfg.menu, cat.map(&:downcase), label)[0]
     end
 
     def render
@@ -53,18 +53,21 @@ module FluxboxAppsMenu
           # when a label is set the path has high priority 
           return [info, 0] if info.has_key?(label)
 
+          if info.has_key? :mandatory_categories
+            info[:mandatory_categories] = info[:mandatory_categories].map(&:downcase)
+            next unless (info[:mandatory_categories] & cat) == info[:mandatory_categories]
+          end
+
           unless subitems.to_hash.empty?
-            result, index = traverse_menu(subitems, cat, label, selected_index) 
-            selected, selected_index = result, index unless result.nil? 
+            result, index = traverse_menu(subitems, cat, label, selected_index)
+            selected, selected_index = result, index unless result.nil?
           end
 
           raise NoCategoriesError, key unless info.has_key? :categories
 
-          categories = info[:categories].map do |s|
-            s.downcase unless s.nil?
-          end
+          categories = info[:categories].map { |s| s.downcase unless s.nil? }
 
-          cat.map(&:downcase).each do |c|
+          cat.each do |c|
             if categories.include?(c.strip)
               i = categories.index(c)
               if i < selected_index
@@ -73,6 +76,7 @@ module FluxboxAppsMenu
               end
             end
           end
+
         end
       end
 
