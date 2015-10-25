@@ -44,9 +44,10 @@ module FluxboxAppsMenu
     end
 
     def exec
-      com = @ini['Desktop Entry']['Exec'].to_s.gsub('%c', name).gsub('%F', '')
-        .gsub('%i', '').gsub('%U', '').gsub('%f', '').gsub('%m', '')
-        .gsub('%u', '').gsub(/[ ]{2,}/, ' ').gsub(/\ }/, '}').strip
+      com = @ini['Desktop Entry']['Exec'].to_s
+        .gsub(/((?:"){,1})%c\1/, "\\1#{name}\\1")
+        .gsub(/((?:"){,1})(%F|%i|%U|%f|%m|%u)\1/, '')
+        .gsub(/[ ]{2,}/, ' ').gsub(/\ }/, '}').strip
 
       terminal? ? @cfg.terminal + ' ' + com : com
     end
