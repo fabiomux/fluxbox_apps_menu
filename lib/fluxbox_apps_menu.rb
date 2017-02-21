@@ -67,9 +67,9 @@ module FluxboxAppsMenu
           end
 
           begin
-            submenu = @fmenu.assign_menu(cat, name)  
+            submenu = @fmenu.assign_menu(cat, name)
           rescue NoCategoriesError => e
-            puts '[No category] '.bold.red + "The \"#{e.message}\" menu item doesn't have any categoty, check your \"fluxbox_menu_apps.yaml\""
+            puts '[No category] '.bold.red + "The \"#{e.message}\" menu item doesn't have any category, check your \"fluxbox_menu_apps.yaml\""
             exit
           end
 
