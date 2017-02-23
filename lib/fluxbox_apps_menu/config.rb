@@ -2,7 +2,7 @@ require 'yaml'
 
 module FluxboxAppsMenu
   class Config
-    attr_reader :lang, :icon_paths, :filename, :banned_files, :app_paths, :icons, :terminal
+    attr_reader :lang, :icon_paths, :filename, :banned_files, :unhide_files, :app_paths, :icons, :terminal
     attr_accessor :menu
 
     def initialize
@@ -19,6 +19,7 @@ module FluxboxAppsMenu
       yaml = YAML.load_file(@filename)
 
       @banned_files = yaml[:banned_files]
+      @unhide_files = yaml[:unhide_files]
       @icon_paths = yaml[:icon_paths]
       @app_paths = yaml[:app_paths] + [ ENV['HOME'] + '/.local/share/applications']
       @menu = yaml[:menu]

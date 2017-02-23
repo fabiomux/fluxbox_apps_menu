@@ -22,6 +22,7 @@ module FluxboxAppsMenu
     end
 
     def hidden?
+      @cfg.unhide_files.each { |r| return false if @filename =~ Regexp.new(r) }
        %w(true 1).include? @ini['Desktop Entry']['NoDisplay'].to_s
     end
 

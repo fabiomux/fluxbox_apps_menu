@@ -7,6 +7,8 @@
 :banned_files: 
 - 'qmmp_.*'
 - 'umplayer_.*'
+:unhide_files:
+- 'kde5-nm-connection-editor.*'
 :icon_paths:
 - /usr/share/icons/gnome/16x16/apps
 - /usr/share/icons/oxygen/16x16/apps
