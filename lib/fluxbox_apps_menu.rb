@@ -56,34 +56,44 @@ module FluxboxAppsMenu
           name = ini.name
 
           if ini.hidden? 
-            puts '[Hidden] '.bold.green + "The application \"#{name}\" is hidden" unless @silent
+            puts '[H] '.bold.gray + "\"#{name}\" (#{f})" unless @silent
             next
           end
 
           cat = ini.categories
           if cat.nil?
-            puts '[No Category] '.bold.red + "The application \"#{name}\" doesn't have any category" unless @silent
+            puts '[C] '.bold.red + "\"#{name}\" (#{f})" unless @silent
             next
           end
 
           begin
             submenu = @fmenu.assign_menu(cat, name)
           rescue NoCategoriesError => e
-            puts '[No category] '.bold.red + "The \"#{e.message}\" menu item doesn't have any category, check your \"fluxbox_menu_apps.yaml\""
+            puts '[C] '.bold.red + "The \"#{e.message}\" menu item doesn't have any category, fix it to your \"fluxbox_menu_apps.yaml\""
             exit
           end
 
           unless submenu.nil?
             icon = ini.icon
             if icon.nil?
-              puts '[No Icon] '.bold.yellow + "The application \"#{name}\" doesn't have any icon" unless @silent
+              puts '[I] '.bold.yellow + "\"#{name}\" (#{f})" unless @silent
             end
 
             submenu[name] = @fmenu.item_exec(name, icon, ini.exec)
           else
-            puts '[No mapped category] '.bold.red + "The application \"#{name}\" doesn't have any mapped category among: #{ini.categories.join(', ')}" unless @silent
+            puts '[C] '.bold.red + "\"#{name}\" doesn't have any mapped category among: #{ini.categories.join(', ')}" unless @silent
           end
         end
+      end
+
+      unless @silent
+        puts ''
+        puts 'Legenda:'
+        puts ''
+        puts '  [H]: Hidden app'.bold.gray
+        puts '  [I]: App without icon'.bold.yellow
+        puts '  [C]: App without categories'.bold.red
+        puts ''
       end
     end
 

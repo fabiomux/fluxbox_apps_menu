@@ -24,20 +24,23 @@ Or install it yourself as:
 
 ## Usage
 
-Build the menu
+Build the menu:
 
     $ fluxbox_apps_menu build
-    
-Create a copy of the config file (*fluxbox_apps_menu.yaml*) under
-the _~/.fluxbox_ folder
 
-    $ fluxbox_apps_menu menuconfig
-    
 When the application menu is built it can be included in
 your main fluxbox menu file (usually *~/.fluxbox/menu*) adding
 the row below where you want display it:
 
     [include] (~/.fluxbox/menu-apps)
+
+
+To start with customizations create a copy of the config file (*fluxbox_apps_menu.yaml*) under
+the _~/.fluxbox_ folder:
+
+    $ fluxbox_apps_menu config
+
+Once completed build again!
 
 ## Get help
 
@@ -48,7 +51,7 @@ Where to start
 Get help for a specific task
 
     $ fluxbox_apps_menu help build
-    $ fluxbox_apps_menu help menuconfig
+    $ fluxbox_apps_menu help config
     
 More help
 

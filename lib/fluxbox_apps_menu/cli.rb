@@ -14,27 +14,32 @@ module FluxboxAppsMenu
       FluxboxAppsMenu::Builder.new(options).create_menu
     end
 
-    desc 'menuconfig', 'Make a local copy of the configuration file.'
+    desc 'config', 'Make a local copy of the configuration file.'
     method_option :overwrite, :aliases => '-o', :default => false, :type => :boolean, :desc => 'Overwrite the config file if exists.'
-    def menuconfig
+    def config
       FluxboxAppsMenu::Builder.new(options).init_config
     end
-      
+
     def help(arg = nil)
       if arg.nil?
         puts <<EOL
 FluxboxAppsMenu v.#{FluxboxAppsMenu::VERSION} by Fabio Mucciante
 
 Description:
-  Build a Fluxbox menu putting the applications in the right
-  section as configured within the "fluxbox_apps_menu.yaml" file.
+  Generates a menu for Fluxbox containing the applications installed
+  and visible in other DE menus.
 
-  Using the "menuconfig" task a copy of this file will be created
-  under the "~/.fluxbox" path.
+  Customizations on the building process are achieved editing the
+  "fluxbox_apps_menu.yaml" file copied under the "~/.fluxbox"
+  folder by the "config" task.
+  Watch the online page for more info:
 
-  The application's menu file will be created in "~/.fluxbox/menu-apps"
-  and can be included within your fluxbox menu adding the row below:
-  
+    https://github.com/fabiomux/fluxbox_apps_menu/wiki
+
+  The file containing the application tree will be created by 
+  default to "~/.fluxbox/menu-apps" and can be included within the
+  main menu adding the line:
+
     [include] (~/.fluxbox/menu-apps)
 
 EOL
@@ -44,7 +49,7 @@ EOL
       end
     end
 
-    default_task :build
+#     default_task :build
   end
 
 end 
