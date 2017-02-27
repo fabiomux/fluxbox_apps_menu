@@ -47,7 +47,7 @@ module FluxboxAppsMenu
     def scan_app_folder
       @cfg.app_paths.each do |d|
 
-        Dir.glob(d + '/*.desktop') do |f|
+        Dir.glob(File.expand_path(d + '/*.desktop')) do |f|
 
           ini = DesktopFile.new(f, @cfg)
 

@@ -21,7 +21,7 @@ module FluxboxAppsMenu
       @banned_files = yaml[:banned_files]
       @unhide_files = yaml[:unhide_files]
       @icon_paths = yaml[:icon_paths]
-      @app_paths = yaml[:app_paths] + [ ENV['HOME'] + '/.local/share/applications']
+      @app_paths = yaml[:app_paths]
       @menu = yaml[:menu]
       @icons = yaml[:icons]
       @terminal = yaml[:terminal]

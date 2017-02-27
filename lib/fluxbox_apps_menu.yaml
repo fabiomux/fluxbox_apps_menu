@@ -24,6 +24,7 @@
 - /usr/share/applications
 - /usr/share/applications/kde4
 - /usr/share/applications/YaST2
+- ~/.local/share/applications
 :menu:
   Development:
     :icon: applications-development
