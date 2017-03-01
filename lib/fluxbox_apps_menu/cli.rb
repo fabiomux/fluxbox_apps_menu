@@ -8,7 +8,7 @@ module FluxboxAppsMenu
 
     desc 'build', 'Build the menu'
     method_option :filename, :aliases => '-f', :default => '', :desc => 'Save as filename.'
-    method_option :silent, :aliases => '-s', :default => false, :type => :boolean, :desc => 'Don\'t show any output message.'
+    method_option :verbose, :aliases => '-v', :default => false, :type => :boolean, :desc => 'Print helping output messages.'
     method_option :overwrite, :aliases => '-o', :default => true, :type => :boolean, :desc => 'Overwrite the app menu if exists.'
     def build
       FluxboxAppsMenu::Builder.new(options).create_menu
@@ -23,6 +23,7 @@ module FluxboxAppsMenu
     def help(arg = nil)
       if arg.nil?
         puts <<EOL
+
 FluxboxAppsMenu v.#{FluxboxAppsMenu::VERSION} by Fabio Mucciante
 
 Description:
