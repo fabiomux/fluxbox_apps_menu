@@ -8,7 +8,9 @@
 - 'qmmp_.*'
 - 'umplayer_.*'
 :unhide_files:
-- 'kde5-nm-connection-editor.*'
+- 'nm-connection-editor'
+- 'bluedevilsendfile'
+- 'bluedevilwizard'
 :icon_paths:
 - /usr/share/icons/gnome/16x16/apps
 - /usr/share/icons/oxygen/16x16/apps
