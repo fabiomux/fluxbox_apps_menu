@@ -4,8 +4,6 @@ require 'fluxbox_apps_menu/menu'
 require 'fluxbox_apps_menu/desktop_file'
 require 'fluxbox_apps_menu/utils'
 
-$VERBOSE = nil
-
 module FluxboxAppsMenu
 
   class Builder
@@ -78,7 +76,7 @@ module FluxboxAppsMenu
               puts '[I] '.bold.yellow + "\"#{name}\" (#{f})" if @verbose
             end
 
-            submenu[name] = @fmenu.item_exec(name, icon, ini.exec)
+            submenu[name] = MenuItem.new(:label => name, :icon  => icon, :command => ini.exec)
             puts '[V]'.bold.green + " \"#{name}\" (#{f})" if @verbose
           else
             STDERR.puts 'Warning! '.bold.yellow + "\"#{name}\" doesn't have any mapped category among: #{ini.categories.join(', ')}, fix it to your \"fluxbox_menu_apps.yaml\" " 
