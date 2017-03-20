@@ -1,11 +1,11 @@
-require 'inifile'
-#require 'fluxbox_apps_menu/config'
+require 'iniparse'
+
 module FluxboxAppsMenu
 
   class DesktopFile
 
     def initialize(filename, cfg = nil)
-      @ini = IniFile.new(:filename => filename, :comment => '#', :encoding => 'UTF-8')
+      @ini = IniParse.parse(File.read(filename))
       @cfg = cfg.nil? ? FluxboxAppsMenu::Config.new : cfg
       @filename = filename
     end
