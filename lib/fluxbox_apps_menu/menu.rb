@@ -112,7 +112,7 @@ module FluxboxAppsMenu
             selected, selected_index = result, index unless result.nil?
           end
 
-          raise NoCategoriesError, key unless info.has_key? :categories
+          raise NoMenuCategories, key unless info.has_key? :categories
 
           categories = info[:categories].map { |s| s.downcase unless s.nil? }
 

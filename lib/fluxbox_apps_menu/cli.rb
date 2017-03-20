@@ -50,6 +50,15 @@ EOL
       end
     end
 
+    def self.start
+      begin
+        super
+      rescue => e
+        Messages.error e
+        exit 1
+      end
+    end
+
 #     default_task :build
   end
 

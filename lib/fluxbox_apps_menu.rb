@@ -17,11 +17,8 @@ module FluxboxAppsMenu
     end
 
     def create_menu
-      if @overwrite == false
-        if File.exists?(File.expand_path("~/.fluxbox/#{@filename}"))
-          STDERR.puts 'Fatal Error! '.bold.red "The file #{@filename} already exists!"
-          exit
-        end
+      unless @overwrite
+        raise FileExists, "~/.fluxbox/#{@filename}" if File.exists?(File.expand_path("~/.fluxbox/#{@filename}"))
       end
 
       scan_app_folder
@@ -31,10 +28,7 @@ module FluxboxAppsMenu
 
     def init_config
       unless @overwrite
-        if File.exists?(File.expand_path("~/.fluxbox/fluxbox_apps_menu.yaml"))
-          STDERR.puts 'Fatal Error! '.bold.red + "The file 'fluxbox_apps_menu.yaml' already exists in '#{File.expand_path('~/.fluxbox')}'"
-          exit
-        end
+        raise FileExists, '~/.fluxbox/fluxbox_apps_menu.yaml' if File.exists?(File.expand_path("~/.fluxbox/fluxbox_apps_menu.yaml"))
       end
       FileUtils.copy(File.dirname(__FILE__) + '/fluxbox_apps_menu.yaml', File.expand_path('~/.fluxbox/'))
     end
@@ -46,6 +40,8 @@ module FluxboxAppsMenu
 
         Dir.glob(File.expand_path(d + '/*.desktop')) do |f|
 
+          Messages.examining f if @verbose
+
           ini = DesktopFile.new(f, @cfg)
 
           next if ini.banned_file?
@@ -53,47 +49,35 @@ module FluxboxAppsMenu
           name = ini.name
 
           if ini.hidden? 
-            puts '[H] '.bold.gray + "\"#{name}\" (#{f})" if @verbose
+            Messages.hidden(name, f) if @verbose
             next
           end
 
           cat = ini.categories
           if cat.nil?
-            puts '[C] '.bold.red + "\"#{name}\" (#{f})" if @verbose
+            Messages.no_category(name, f) if @verbose
             next
           end
 
-          begin
-            submenu = @fmenu.assign_menu(cat, name)
-          rescue NoCategoriesError => e
-            STDERR.puts 'Fatal Error! '.bold.red + "The \"#{e.message}\" menu item doesn't have any category, fix it to your \"fluxbox_menu_apps.yaml\""
-            exit
-          end
+          submenu = @fmenu.assign_menu(cat, name)
 
-          unless submenu.nil?
-            icon = ini.icon
+          raise NoMappedCategories, {:name => name, :categories => ini.categories} if submenu.nil?
+
+          icon = ini.icon
+
+          submenu[name] = MenuItem.new(:label => name, :icon  => icon, :command => ini.exec)
+
+          if @verbose 
             if icon.nil?
-              puts '[I] '.bold.yellow + "\"#{name}\" (#{f})" if @verbose
+              Messages.no_icon(name, f)
+            else
+              Messages.ok(name, f)
             end
-
-            submenu[name] = MenuItem.new(:label => name, :icon  => icon, :command => ini.exec)
-            puts '[V]'.bold.green + " \"#{name}\" (#{f})" if @verbose
-          else
-            STDERR.puts 'Warning! '.bold.yellow + "\"#{name}\" doesn't have any mapped category among: #{ini.categories.join(', ')}, fix it to your \"fluxbox_menu_apps.yaml\" " 
           end
         end
       end
 
-      if @verbose
-        puts ''
-        puts 'Quick Help:'
-        puts ''
-        puts '  [V]: Everything is ok'.bold.green
-        puts '  [H]: Hidden app'.bold.gray
-        puts '  [I]: App without icon'.bold.yellow
-        puts '  [C]: App without categories'.bold.red
-        puts ''
-      end
+      Messages.help if @verbose
     end
 
   end
