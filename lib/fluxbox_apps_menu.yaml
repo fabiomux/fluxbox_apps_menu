@@ -98,11 +98,15 @@
       :categories:
       - Yast
       Hardware:
-        :icon: package_yast_hardware
+        :icon:
+        - package_yast_hardware
+        - yast-hardware
         :categories:
         - X-SuSE-YaST-Hardware
       Miscellaneous:
-        :icon: package_yast_misc
+        :icon: 
+        - package_yast_misc
+        - yast-misc
         :categories:
         - X-SuSE-YaST-Misc
       Network Devices:
@@ -118,7 +122,9 @@
         :categories:
         - X-SuSE-YaST-Security
       System:
-        :icon: package_yast_system
+        :icon: 
+        - package_yast_system
+        - yast-system
         :categories:
         - X-SuSE-YaST-System
       Software:

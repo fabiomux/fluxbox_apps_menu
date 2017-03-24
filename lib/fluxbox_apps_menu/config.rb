@@ -35,16 +35,19 @@ module FluxboxAppsMenu
       iname = icon_name        if iname.nil?
 
       return nil if iname.to_s.empty?
-      return iname if iname.to_s.match('/') && File.exists?(iname)
+      return iname if iname.class == String && iname =~ /^\// && File.exists?(iname)
 
-      iname.gsub!(/\.png$/, '')
+      iname = [iname] if iname.class == String
 
-      @icon_paths.each do |p|
-        return "#{p}/#{iname}.png" if File.exists?("#{p}/#{iname}.png")
+      iname.each do |i|
+        i = File.basename(i, File.extname(i))
+
+        @icon_paths.each do |p|
+          return "#{p}/#{i}.png" if File.exists?("#{p}/#{i}.png")
+        end
       end
 
-      return nil
-
+      nil
     end
   end
 end
