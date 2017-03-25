@@ -18,13 +18,13 @@ module FluxboxAppsMenu
 
       yaml = YAML.load_file(@filename)
 
-      @banned_files = yaml[:banned_files]
-      @unhide_files = yaml[:unhide_files]
-      @icon_paths = yaml[:icon_paths]
-      @app_paths = yaml[:app_paths]
-      @menu = yaml[:menu]
-      @icons = yaml[:icons]
-      @terminal = yaml[:terminal]
+      @banned_files = yaml[:banned_files] || []
+      @unhide_files = yaml[:unhide_files] || []
+      @icon_paths = yaml[:icon_paths] || []
+      @app_paths = yaml[:app_paths] || []
+      @menu = yaml[:menu] || {}
+      @icons = yaml[:icons] || {}
+      @terminal = yaml[:terminal] || 'xdg-terminal'
 
       @lang = ENV['LANG'].split('.')[0]
       @lang = { :short => @lang.split('_')[0], :long => @lang }
