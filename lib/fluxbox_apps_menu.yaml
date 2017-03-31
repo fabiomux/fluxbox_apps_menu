@@ -1,6 +1,4 @@
 ---
-# other options: kdesu and gnomesu
-:switch_user: 'xdg-su'
 :terminal: 'xdg-terminal'
 :icons: 
   App Name: 'icon-name'
