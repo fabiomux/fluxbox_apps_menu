@@ -1,24 +1,16 @@
 # FluxboxAppsMenu
 
-FluxboxAppsMenu create an applications menu file for Fluxbox Window Manager
-including the applications stored within the folders containing the
-_.desktop_ files and discarding automatically those marked as hidden.
+FluxboxAppsMenu builds an application's menu for the Fluxbox window manager starting from
+the _desktop_ files installed by the applications themselves.
 
-They will be organized in several categories and sub-categories specified
-within the config file *fluxbox_apps_menu.yaml*
+Categories and sub-categories listed within these files will be used to assign the related
+application to the proper _folder_ in order to create a tree representation automatically.
 
+Customizations are allowed enhancing the configuration file.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-    gem 'fluxbox_apps_menu'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
+Install it as:
 
     $ gem install fluxbox_apps_menu
 
@@ -29,30 +21,35 @@ Build the menu:
     $ fluxbox_apps_menu build
 
 When the application menu is built it can be included in your main fluxbox menu file 
-(usually *~/.fluxbox/menu*) adding the row below where you want display it:
+(usually *~/.fluxbox/menu*) adding the row below wherever you want to display it:
 
     [include] (~/.fluxbox/menu-apps)
 
+## Configuration
 
-To start with customizations create a copy of the config file (*fluxbox_apps_menu.yaml*) 
-under the _~/.fluxbox_ folder:
+To start with customizations create a copy of the config file (*fluxbox_apps_menu.yaml*)
+under the _~/.fluxbox_ folder using the related command:
 
     $ fluxbox_apps_menu config
 
-Once completed build again!
+Edit it with your favorite editor:
+
+    $ vi ~/fluxbox/fluxbox_apps_menu.yaml
+
+Once changes are done build the menu again!
 
 ## Get help
 
-Where to start
+Where to start:
 
     $ fluxbox_apps_menu help
-    
-Get help for a specific task
+
+Get help for a specific task:
 
     $ fluxbox_apps_menu help build
     $ fluxbox_apps_menu help config
-    
-More help
+
+More help:
 
 - The wiki page: https://github.com/fabiomux/fluxbox_apps_menu/wiki
 
