@@ -8,22 +8,14 @@ application to the proper _folder_ in order to create a tree representation auto
 
 Customizations are allowed enhancing the configuration file.
 
+[![Ruby](https://github.com/fabiomux/fluxbox_apps_menu/actions/workflows/main.yml/badge.svg)][wf_main]
+[![Gem Version](https://badge.fury.io/rb/fluxbox_apps_menu)][gem_version]
+
 ## Installation
 
 Install it as:
 
     $ gem install fluxbox_apps_menu
-
-## Usage
-
-Build the menu:
-
-    $ fluxbox_apps_menu build
-
-When the application menu is built it can be included in your main fluxbox menu file 
-(usually *~/.fluxbox/menu*) adding the row below wherever you want to display it:
-
-    [include] (~/.fluxbox/menu-apps)
 
 ## Configuration
 
@@ -38,6 +30,17 @@ Edit it with your favorite editor:
 
 Once changes are done build the menu again!
 
+## Usage
+
+Build the menu:
+
+    $ fluxbox_apps_menu build
+
+When the application menu is built it can be included in your main fluxbox menu file 
+(usually *~/.fluxbox/menu*) adding the row below wherever you want to display it:
+
+    [include] (~/.fluxbox/menu-apps)
+
 ## Get help
 
 Where to start:
@@ -49,14 +52,13 @@ Get help for a specific task:
     $ fluxbox_apps_menu help build
     $ fluxbox_apps_menu help config
 
-More help:
+## More help:
 
-- The wiki page: https://github.com/fabiomux/fluxbox_apps_menu/wiki
+More info is available at:
+- the [project page on the Freeaptitude blog][project_page];
+- the [FluxboxAppsMenu Github wiki][fluxbox_apps_menu_wiki].
 
-## Contributing
-
-1. Fork it ( https://github.com/fabiomux/fluxbox_apps_menu/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+[project_page]: https://freeaptitude.altervista.org/projects/fluxbox-apps-menu.html "Project page on the Freeaptitude blog"
+[fluxbox_apps_menu_wiki]: https://github.com/fabiomux/fluxbox_apps_menu/wiki "FluxboxAppsMenu wiki page on GitHub"
+[wf_main]: https://github.com/fabiomux/fluxbox_apps_menu/actions/workflows/main.yml
+[gem_version]: https://badge.fury.io/rb/fluxbox_apps_menu
