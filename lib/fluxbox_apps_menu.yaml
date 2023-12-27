@@ -1,8 +1,8 @@
 ---
 :terminal: 'xdg-terminal'
-:icons: 
+:icons:
   App Name: 'icon-name'
-:banned_files: 
+:banned_files:
 - 'qmmp_.*'
 - 'umplayer_.*'
 :unhide_files:
@@ -80,7 +80,7 @@
       :categories:
       - X-GNOME-Settings-Panel
       Desktop:
-        :icon: 
+        :icon:
         :categories:
         - X-GNOME-PersonalSettings
       Hardware:
@@ -102,7 +102,7 @@
         :categories:
         - X-SuSE-YaST-Hardware
       Miscellaneous:
-        :icon: 
+        :icon:
         - package_yast_misc
         - yast-misc
         :categories:
@@ -120,7 +120,7 @@
         :categories:
         - X-SuSE-YaST-Security
       System:
-        :icon: 
+        :icon:
         - package_yast_system
         - yast-system
         :categories:
@@ -144,7 +144,7 @@
       -
       -
       - Emulator
-      Wine: 
+      Wine:
         :icon: wine
         :categories:
         - Wine

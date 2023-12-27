@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require "fluxbox_apps_menu/cli"
+
+FluxboxAppsMenu::CLI.start
