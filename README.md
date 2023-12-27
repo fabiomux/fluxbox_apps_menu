@@ -9,7 +9,7 @@ application to the proper _folder_ in order to create a tree representation auto
 Customizations are allowed enhancing the configuration file.
 
 [![Ruby](https://github.com/fabiomux/fluxbox_apps_menu/actions/workflows/main.yml/badge.svg)][wf_main]
-[![Gem Version](https://badge.fury.io/rb/fluxbox_apps_menu)][gem_version]
+[![Gem Version](https://badge.fury.io/rb/fluxbox_apps_menu.svg)][gem_version]
 
 ## Installation
 
